@@ -1,0 +1,60 @@
+<form (ngSubmit)="class1(myform)"      #myform="ngForm">
+ 
+         
+<mat-card>	
+<!-- <mat-card-header>
+	 <mat-card-title>Post Job</mat-card-title>
+</mat-card-header> -->
+<mat-card-content>
+	<mat-form-field>
+		<mat-label>Job Type</mat-label>
+		<mat-select [(ngModel)]="job" [ngModelOptions]="{standalone: true}">
+      		<mat-option *ngFor="let j of jobs;" [value]="j.type">{{j.type}}</mat-option>
+    	</mat-select>
+	</mat-form-field>
+	<br>
+	
+	<mat-form-field>
+		<mat-label>Company Name</mat-label>
+		<input matInput [(ngModel)]="companyName"  [ngModelOptions]="{standalone: true}">
+	</mat-form-field>
+	<br>
+	
+	<mat-form-field>
+		<mat-label>Company Id</mat-label>
+		<input matInput [(ngModel)]="companyId"  [ngModelOptions]="{standalone: true}">
+	</mat-form-field>
+	<br>
+	
+	
+
+	<mat-form-field>
+		<mat-label>College</mat-label>
+		<mat-select [(ngModel)]="college" [ngModelOptions]="{standalone: true}">
+			<mat-option *ngFor = "let c of colleges;" [value]="c.type">{{c.type}}</mat-option>
+		</mat-select>
+	</mat-form-field>
+	<br>
+
+	<mat-form-field>
+		<mat-label>Skills</mat-label>
+		<mat-select [(ngModel)]="skills" [ngModelOptions]="{standalone: true}">
+			<mat-option *ngFor ="let g of requiredSkills;" [value]="g.type">{{g.type}}</mat-option>
+		</mat-select>
+	</mat-form-field>
+	<br>
+
+	<mat-form-field>
+		<mat-label>Salary</mat-label>
+		<input matInput [(ngModel)]="salary"  [ngModelOptions]="{standalone: true}">
+	</mat-form-field>
+
+
+</mat-card-content>
+ <mat-card-actions>
+    <button mat-raised-button color="accent" type="submit">Submit</button>
+
+  </mat-card-actions>
+</mat-card>
+
+	</form>

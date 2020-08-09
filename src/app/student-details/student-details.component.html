@@ -1,0 +1,133 @@
+<form class="example-form">
+	
+	<table class="example-full-width" cellspacing="0"><tr>
+    <td><mat-form-field class="example-full-width">
+      <mat-label>First name</mat-label>
+      <input matInput [(ngModel)]="firstName" [ngModelOptions]="{standalone: true}">
+    </mat-form-field></td>
+    <td><mat-form-field class="example-full-width">
+      <mat-label>Last Name</mat-label>
+      <input matInput [(ngModel)]="lastName" [ngModelOptions]="{standalone: true}">
+    </mat-form-field></td>
+  </tr></table>
+
+	<mat-form-field >
+		<mat-label>UserRollNo</mat-label>
+		<input matInput [(ngModel)]="usn" [ngModelOptions]="{standalone: true}">
+	</mat-form-field>
+	
+  <mat-form-field class="example-full-width">
+                <mat-label>College Name</mat-label>
+                <input matInput matInput 
+                  [(ngModel)]="collegeName"  [ngModelOptions]="{standalone: true}">
+  </mat-form-field>
+
+	<mat-form-field class="example-full-width">
+    	<mat-label>Email</mat-label>
+    	<input matInput
+           placeholder="Ex. pat@example.com"  [(ngModel)]="emailId" [ngModelOptions]="{standalone: true}">
+    	<mat-hint>Errors appear instantly!</mat-hint>
+		<mat-error *ngIf="emailFormControl.hasError('email') && 	!emailFormControl.hasError('required')">
+	      	Please enter a valid email address
+	    </mat-error>
+	    	<mat-error *ngIf="emailFormControl.hasError('required')">
+      		Email is <strong>required</strong>
+    	</mat-error>
+  	</mat-form-field> 
+
+  	<mat-form-field class="example-full-width">
+	    <mat-label>Telephone</mat-label>
+    	<span matPrefix>+91 &nbsp;</span>
+    	<input type="tel" matInput placeholder="555-555-1234" [(ngModel)]="phoneNo" [ngModelOptions]="{standalone: true}">
+    
+  	</mat-form-field>
+
+<table class="example-form" cellspacing="o">
+  <tr>
+  <td>
+      <mat-form-field>
+        <mat-label>Age</mat-label>
+        <input matInput [(ngModel)]="age"  [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
+  </td>
+  <td> 
+	    <mat-form-field>
+  	 	  <mat-label>Date Of Birth</mat-label>
+  		  <input matInput [matDatepicker]="picker" [(ngModel)]="dateOfBirth" [ngModelOptions]="{standalone: true}">
+  		  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  		  <mat-datepicker #picker></mat-datepicker>
+	    </mat-form-field>
+  </td>
+</tr>
+</table>
+
+	<mat-form-field class="example-full-width">
+    	<mat-label>Address</mat-label>
+      	<textarea matInput placeholder="Ex. 100 Main St"  [(ngModel)]="address" [ngModelOptions]="{standalone: true}"></textarea>
+	</mat-form-field>
+  
+<table class="example-full-width" cellspacing="0">
+	<tr>
+	<td>	
+    <mat-form-field>
+   		<mat-label>Current Semester</mat-label>
+   		<mat-select  [(ngModel)]="semester" [ngModelOptions]="{standalone: true}">
+   			<mat-option *ngFor ="let g of AllSemester;" [value]="g.getSemester">
+   				{{g.getSemester}}
+   			</mat-option>
+   		</mat-select>
+   	</mat-form-field>
+	</td>
+
+    <td>
+   <mat-form-field>
+    	<mat-label>Branch</mat-label>
+    	<mat-select [(ngModel)]="branchList" [ngModelOptions]="{standalone: true}">
+    		<mat-option *ngFor="let list of branch;" [value]="list.viewBranch">
+    			{{list.viewBranch}}
+    		</mat-option>
+    	</mat-select>	
+    </mat-form-field>
+	</td>
+</tr>
+</table>
+
+
+	 <table class="example-full-width" cellspacing="0">
+	 <tr>
+	 <td><mat-form-field><mat-label>10th Aggregate</mat-label>
+    <input matInput [(ngModel)]="highSchoolMarks" [ngModelOptions]="{standalone: true}">
+	</mat-form-field>
+	</td>
+	<td><mat-form-field>
+			<mat-label>12th Aggregate</mat-label>
+			<input matInput [(ngModel)]="seniorSchoolMarks" [ngModelOptions]="{standalone: true}">
+		</mat-form-field>
+	</td>
+	</tr>	
+	</table>
+		
+  <table class="example-full-width" cellspacing="0">
+    <tr>
+      <td>
+        <mat-form-field>
+          <mat-label>Be Aggregate</mat-label>
+           <input matInput [(ngModel)]="bTechCgpa" [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field>
+          <mat-label>BacklogIfAny</mat-label>
+          <input matInput [(ngModel)]="noOfBacks" [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+      </td>
+    </tr>  
+  </table>
+	
+  <button mat-raised-button color="accent"(click)="onUpdateDetails()" >Update Details</button>
+	
+
+</form>
+<!--
+
+-->

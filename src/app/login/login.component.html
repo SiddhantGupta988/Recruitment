@@ -1,0 +1,214 @@
+<!--<p>login works!</p>-->
+<mat-card>
+    <mat-card-title>Sign In/Sign Up</mat-card-title>
+    <mat-card-content>
+       <mat-tab-group>
+           
+            <mat-tab label="Login" >
+               
+                <form (submit)="on_login(pstform)" #pstform="ngForm">
+                <mat-form-field appearance="outline">
+                    <mat-label>UserName</mat-label>
+                    <input matInput [(ngModel)]="usn" [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+            
+                <mat-form-field appearance="outline">
+                <mat-label>Password</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'">
+    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>    
+                <!--     <input matInput password="pass_in"
+                    [ngModel]
+                    >
+                 --></mat-form-field>
+                <br>
+                <button
+                    mat-raised-button
+                    color="accent"
+                    type="submit">Login As Student
+                </button>
+                <div class ="class122">
+                <button 
+                    mat-raised-button
+                    color = "accent"
+                    type = "button" (click)="loginRecruiterPortal()">Login As Recruiter
+                </button>
+              </div>
+                </form>
+         </mat-tab>
+
+
+
+        
+         
+  <mat-tab label="Sign Up" >
+         <form (submit)="on_submit(postform)" #postform="ngForm">
+         
+            <table class="example-full-width" cellspacing="0"><tr>
+            <td><mat-form-field class="example-full-width">
+              <mat-label>First name</mat-label>
+                <input matInput name="firstName"
+                ngModel
+                 >
+                </mat-form-field>
+            </td>
+
+            <td>
+              <div class ="class123">
+              <mat-form-field class="example-full-width">
+                <mat-label>Last Name</mat-label>
+                <input matInput name="lastName" ngModel>
+                </mat-form-field>
+              </div>
+            </td>
+            </tr>
+            </table>
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Email</mat-label>
+                <input matInput [formControl]="emailFormControl" 
+                     placeholder="Ex. pat@example.com" name="email" [(ngModel)] ="emailId">
+                <mat-hint>Errors appear instantly!</mat-hint>
+                <mat-error *ngIf="emailFormControl.hasError('email') &&   !emailFormControl.hasError('required')">
+                    Please enter a valid email address
+                </mat-error>
+                <mat-error *ngIf="emailFormControl.hasError('required')">
+                    Email is <strong>required</strong>
+                </mat-error>
+            </mat-form-field> 
+
+            <div class ="class123">
+            <mat-form-field class="example-full-width">
+                <mat-label>College Name</mat-label>
+                <input matInput matInput name="collegeName"
+                  ngModel>
+            </mat-form-field>
+          </div>
+          
+            <mat-form-field >
+                <mat-label>UserRollNo</mat-label>
+                  <input matInput name="usnIn"
+                  ngModel >
+            </mat-form-field>
+
+           
+            <mat-form-field>
+                <mat-label>Age</mat-label>
+                <input matInput name="ageIn" 
+                ngModel  >
+             </mat-form-field>
+           
+            <br>
+            <mat-form-field class="example-full-width">
+                <mat-label>Telephone</mat-label>
+                <span matPrefix>+91 &nbsp;</span>
+                <input type="tel" matInput placeholder="555-555-1234"name="PhoneNo"
+                ngModel>
+            </mat-form-field>
+
+          <div class ="class124">
+          <mat-form-field>
+             <mat-label>Date Of Birth</mat-label>
+                <input matInput [matDatepicker]="picker" [(ngModel)]="dateOfBirth" [ngModelOptions]="{standalone: true}">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+          <br>
+         <mat-form-field class="example-full-width">
+                <mat-label>Address</mat-label>
+                <textarea matInput placeholder="Ex. 100 Main St"  [(ngModel)]="address" [ngModelOptions]="{standalone: true}"></textarea>
+         </mat-form-field>
+  
+        <table class="example-full-width" cellspacing="0">
+          <tr>
+
+          <td>    
+            <mat-form-field>
+                <mat-label>Current Semester</mat-label>
+                <mat-select  [(ngModel)]="semester" [ngModelOptions]="{standalone: true}">
+                    <mat-option *ngFor ="let g of AllSemester;" [value]="g.getSemester">
+                        {{g.getSemester}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+          </td>
+
+          <td>
+          <div class ="class123">
+           <mat-form-field>
+                <mat-label>Branch</mat-label>
+                <mat-select [(ngModel)]="branchList" [ngModelOptions]="{standalone: true}">
+                    <mat-option *ngFor="let list of branch;" [value]="list.viewBranch">
+                        {{list.viewBranch}}
+                    </mat-option>
+                </mat-select>   
+            </mat-form-field>
+          </div>
+          </td>
+
+        </tr>
+      </table>
+
+
+     <table class="example-full-width" cellspacing="0">
+      <tr>
+
+       <td>
+        <mat-form-field><mat-label>10th Aggregate</mat-label>
+            <input matInput [(ngModel)]="highSchoolMarks" [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+      </td>
+
+      <td>
+        <div class ="class123">
+        <mat-form-field>
+            <mat-label>12th Aggregate</mat-label>
+            <input matInput [(ngModel)]="seniorSchoolMarks" [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+      </div>
+      </td>
+
+      </tr>   
+    </table>
+        
+  <table class="example-full-width" cellspacing="0">
+    <tr>
+      <td>
+        <mat-form-field>
+          <mat-label>Be Aggregate</mat-label>
+           <input matInput [(ngModel)]="bTechCgpa" [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+      </td>
+      <td>
+        <div class ="class123">
+        <mat-form-field>
+          <mat-label>BacklogIfAny</mat-label>
+          <input matInput [(ngModel)]="noOfBacks" [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+      </div>
+      </td>
+    </tr>  
+  </table>
+  
+  <div style="text-align:center">
+    <input type="file" name="image" enctype="multipart/form-data"  (change)="selectImage($event)">
+  </div>
+  <!-- <button type="submit" click="onSubmit()">Upload Image</button> -->
+
+  <button 
+      mat-raised-button 
+      color="primary"
+      type="submit">Submit
+  </button>
+   
+  </form>   
+</mat-tab>
+</mat-tab-group>
+<div class=c1></div>
+</mat-card-content>
+
+</mat-card>
+
+

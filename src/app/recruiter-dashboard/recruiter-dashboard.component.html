@@ -1,0 +1,39 @@
+<mat-toolbar color= "primary">
+	<mat-toolbar-row>
+		<button mat-icon-button>
+			<mat-icon (click)="sidenav.toggle()">
+			menu</mat-icon>
+		</button>
+	
+	<h1>Recruiter Portal</h1>
+	<span class="menu-spacer"></span>
+	<div>
+		<a mat-button router-Link="studentdetail">Dashboard</a>
+		<a mat-button router-Link="studentdetail">Placement Drive</a>
+		<a mat-button router-Link="studentdetail"><mat-icon>notification_important</mat-icon>Notification</a>
+		<a mat-button router-Link="studentdetail">View Students</a>
+		<a mat-button router-Link="studentdetail">Sign Out</a>
+	</div>
+	</mat-toolbar-row>
+</mat-toolbar>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav>
+    <mat-nav-list>
+
+      <a mat-list-item routerLink = '/accounts'  routerLinkActive = "active"> Dashboard </a>
+      <a mat-list-item routerLink = 'addJobs' routerLinkActive = "active">PostForJob </a>
+      <a mat-list-item routerLink ='availableJobs'  routerLinkActive = "active">Jobs Posted</a>
+      <a mat-list-item routerLink='listOfApplication'  routerLinkActive = "active"> View Students</a>
+      <a mat-list-item [routerLink]="'/activities'"  routerLinkActive = "active"> Queries </a>
+      <a mat-list-item [routerLink]="'/create-activity'"  routerLinkActive = "active"> Sign Out </a>
+      <a mat-list-item (click)="sidenav.toggle()" href="" mat-list-item  routerLinkActive = "active">Close</a>
+
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div style="height: 88vh;">
+
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
